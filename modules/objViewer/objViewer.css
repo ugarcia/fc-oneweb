@@ -1,0 +1,38 @@
+
+div#glContainer {
+    width: 98%;
+    height: 480px;
+    border: 1px solid red;
+    border-radius: 15px;
+}
+
+table#inputsTable {
+    width: 98%;
+}
+
+table#inputsTable td {
+    padding: 0px 10px;
+}
+
+table#inputsTable p {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid white;
+    border-radius: 15px;
+}
+
+td#selectTd {
+    width: 15%;
+}
+
+td#inputModelTd, 
+td#inputTexturesTd {
+    width: 30%;
+}
+
+td#submitTd {
+    text-align: left;
+}
+
+iframe#dummyFrame {
+    display: none;
+}

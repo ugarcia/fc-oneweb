@@ -1,0 +1,9 @@
+table#tutorialTable * {
+    padding: 0px;
+    margin: 0px;
+}
+
+table#tutorialTable th,
+table#tutorialTable td {
+    border: 1px double #4466AA;
+}

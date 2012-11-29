@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en-US" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="unai" />
+        <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+        
+        <title>Canvas Test</title>
+        
+        <link rel='stylesheet' href='/OneWeb/common/css/commonStyles.css'>
+        <script src="/OneWeb/common/js/common.js"></script>
+        
+        <link rel='stylesheet' href='canvasTestStyles.css'>
+        <script src="canvasTest.js"></script>
+    </head>
+
+    <body onload="startup()">
+        <p id='canvasTestIntro' class="alignLeft">
+            This is a testing Canvas for learning purposes (at the moment.).
+            Currently it only represesents an angular gradient color and some mouse 
+            event handlers for painting into it.
+        </p>
+        <div id="canvas1div">
+            <p id='mousePosP'>(0,0)</p> 
+            <canvas id="canvas1" width='640px' height='480px'> </canvas>
+        </div>
+    </body>
+</html>

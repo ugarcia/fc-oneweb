@@ -1,0 +1,33 @@
+body {
+    background-image: url(/OneWeb/resources/images/NaughtyBots1a.png);
+    background-size: 100% 100%;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+}
+
+table#videoSamplesTable td {
+    width: 33%;
+}
+
+img#naugthyBotsTitleImage {
+    width: 50%;
+    height: 50px;
+    margin: 0px;
+    padding: 0px;
+}
+
+img#larrow1, 
+img#rarrow1, 
+img#playNaughtyBots,
+img#playNaughtyBotsUnreg {
+    width: 100px;
+    height: 100px;
+}
+
+img#playNaughtyBots {
+    display: none;
+}
+
+img#playNaughtyBotsUnreg {
+    display: inline;
+}

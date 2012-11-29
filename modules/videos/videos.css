@@ -1,0 +1,28 @@
+
+table#videosTable {
+    width: 100%;
+    vertical-align: middle;
+}
+
+table#videosTable th {
+    width: 20%;
+    font-size: 20pt;
+    text-align: right;
+    padding-right: 10px;
+}
+
+table#videosTable td {
+    text-align: left;
+    margin: 5px  0px;
+    padding-right: 30%;
+}
+
+.playerInnerBox_gsvb .player_gsvb {
+  width : 480px;
+  height : 320px;
+}
+
+.gsc-branding-text, 
+.gsc-branding-img-noclear {
+    display: none;
+}

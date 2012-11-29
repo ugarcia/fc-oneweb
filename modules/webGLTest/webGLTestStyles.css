@@ -1,0 +1,18 @@
+table#threeExamplesTable *,
+table#tutorialTable * {
+    padding: 0px;
+    margin: 0px;
+    vertical-align: top;
+}
+
+table#threeExamplesTable th,
+table#threeExamplesTable td,
+table#tutorialTable th,
+table#tutorialTable td {
+    border: 1px double #4466AA;
+}
+
+table#threeExamplesTable td {
+    text-align:  left;
+    padding-left: 5px;
+}

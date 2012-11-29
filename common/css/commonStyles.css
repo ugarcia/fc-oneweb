@@ -1,0 +1,63 @@
+
+body {
+    background-color: #212121;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+header, footer {
+    padding: 5px;
+}
+
+table {
+    border-collapse:collapse;
+}
+
+h1 {
+    font-weight: bolder;
+    text-decoration: underline;
+    margin: 0px;
+    padding: 0px;
+}
+
+.stretched {
+    width: 100%;
+    height: 100%;
+}
+
+.stretchWidth {
+    width: 100%;
+}
+
+.stretchHeight {
+    height: 100%;
+}
+
+.transparent5 {
+    opacity: 0.5;
+}
+
+td:hover {
+    opacity: 1.0;
+}
+
+.alignLeft {
+    text-align: left;
+}
+
+.alignCenter {
+    text-align: center;
+}
+
+.alignRight {
+    text-align: right;
+}
+
+.alignTop {
+    vertical-align: text-top;
+}
+
+.fullCollapsed {
+    margin: 0px;
+    padding: 0px;
+}

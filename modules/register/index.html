@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en-US" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="unai" />
+        <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+                
+        <title>Register</title>
+        
+        <link rel='stylesheet' href='/OneWeb/common/css/commonStyles.css'>
+        <script src='/OneWeb/common/js/common.js'></script>
+        <script src='/OneWeb/common/js/md5.js'></script>
+        
+        <link rel='stylesheet' href='registerStyles.css'>
+        <script src='register.js'></script>
+    </head>
+
+    <body onload="startup()">
+        <h1>Register Form</h1><br/>
+        <div>
+            <table class = "stretched" id="registerTable">
+                <form id='registerForm' onsubmit="return validateRegister()">
+                    <tr>
+                        <td>
+                            <label for="registerUser">User</label>
+                        </td>
+                        <td>
+                            <input id="registerUser" type="text" placeholder="user" autofocus required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="registerPassword">Password</label>
+                        </td>
+                        <td>
+                            <input id="registerPassword" type="password" placeholder="password" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="confirmPassword">Confirm Password</label>
+                        </td>
+                        <td>
+                            <input id="confirmPassword" type="password" placeholder="confirm password" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="registerEmail">Email</label>
+                        </td>
+                        <td>
+                            <input id="registerEmail" type="email" placeholder="email@domain" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id ="registerSubmitTd" colspan="2">
+                            <input id="registerSubmit" type="submit" value="Submit">
+                        </td>
+                    </tr>                 
+                </form>
+            </table>
+        </div>
+    </body>
+</html>

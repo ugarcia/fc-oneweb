@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en-US" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="unai" />
+        <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+                
+        <title>OneWeb</title>
+        
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="apple-touch-icon" href="favicon.ico" />
+        
+        <link rel='stylesheet' href='common/css/commonStyles.css'>
+        <script src="common/js/common.js"></script>
+        <script src='common/js/md5.js'></script>
+        
+        <link rel='stylesheet' href='mainStyles.css'>
+        <script src="main.js"></script>
+    </head>
+
+    <body onload="startup()">
+        <div class="stretched">
+            <table id="mainTable" class="stretched alignCenter">
+                <tr id="headerRow">
+                    <td  class="fullCollapsed" colspan="2">
+                        <header>
+                            <table class="stretched" id="headerTable">
+                                <form id='loginForm' onsubmit="return validateLogin()">
+                                    <tr>
+                                        <td id='headerLeft'>
+                                            <!--Something interesting here...-->
+                                        </td>
+                                        <td id='headerCenter'>
+                                            <img id="oneWebTitleImage" src="/OneWeb/resources/images/OneWeb_title.gif">
+                                        </td>
+                                        <td id='headerRight'>
+                                            
+                                            <div id='loginDiv'>
+                                                <table id='loginTable'>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="loginUser">Login</label>
+                                                        </td>
+                                                        <td>
+                                                            <input id="loginUser" type="text" placeholder="user" required tabindex="1">
+                                                        </td>
+                                                        <td>
+                                                            <input id="loginSubmit" type="submit" value="Submit" tabindex="3" >
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="loginPassword">Password</label>
+                                                        </td>
+                                                        <td>
+                                                            <input id="loginPassword" type="password" placeholder="password" required tabindex="2">
+                                                        </td>
+                                                        <td>
+                                                            <a href="Javascript:setFrameContent('contentFrame', 'modules/register/')">Register</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            
+                                            <div id='sessionDiv'>
+                                                <table id='sessionTable'>
+                                                    <tr>
+                                                        <td>
+                                                            <p id='loggedUser'>Logged in as [user]</p>
+                                                        </td>
+                                                        <td>
+                                                            <input id="logoutSubmit" type="submit" value="Logout">
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                </form>
+                            </table>
+                        </header>
+                    </td>
+                </tr>
+                
+                <tr id="contentRow">
+                    <td id="navCell">
+                        <nav class="alignLeft">
+                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/home/')">Home</a></p>
+                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/videos/')">Videos</a></p>
+                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/naughtyBots/')">Naugthy Bots</a></p>
+                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/canvasTest/')">Canvas Test</a></p>
+                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/webGLTest/')">WebGL Test</a></p>
+                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/jqueryTest/')">jquery Test</a></p>
+                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/objViewer/')">Model Viewer</a></p>
+                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/myTests/')">My Tests</a></p>
+                        </nav>
+                    </td>
+                    <td id="contentCell">
+                        <iframe id="contentFrame"> </iframe>
+                    </td>
+                </tr>
+            
+                <tr id="footerRow">
+                    <td colspan="2" class="fullCollapsed">
+                        <footer>
+                            <table class="stretched" id="footerTable">
+                                <tr>
+                                    <td class="alignLeft fullCollapsed">
+                                        <a href="Javascript: setFrameContent('contentFrame', 'modules/contact/')">Contact</a>
+                                    </td>
+                                    <td class="alignRight fullCollapsed">
+                                        <p class="fullCollapsed">&copy; Copyright  by Unai</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </footer>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

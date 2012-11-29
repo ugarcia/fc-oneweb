@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en-US" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="unai" />
+        <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+        
+        <title>Naughty Bots</title>
+        
+        <link rel='stylesheet' href='/OneWeb/common/css/commonStyles.css'>
+        <script src="/OneWeb/common/js/common.js"></script>
+        
+        <link rel='stylesheet' href='naughtyBotsStyles.css'>
+        <script src="naughtyBots.js"></script>
+    </head>
+
+    <body onload="startup()">
+        <img id="naugthyBotsTitleImage" src="/OneWeb/resources/images/NaughtyBots_title.gif"><br/>
+        <div class='alignCenter'>
+            <p id='naughtyBotsIntro1' class="alignLeft">
+                This is the 'Naughty Bots' game, currently in development under Unity3D game engine.
+                For the moment there are only videos available and a playable demo for registered users only
+            </p>
+            <img id='playNaughtyBots' src='/OneWeb/resources/images/play1.png' 
+                 onmouseover="this.src='/OneWeb/resources/images/play1_hover.png'" 
+                 onmousedown="this.src='/OneWeb/resources/images/play1_clicked.png'; naughtyBotsPlay()" 
+                 onmouseup="this.src='/OneWeb/resources/images/play1_hover.png'" 
+                 onmouseout="this.src='/OneWeb/resources/images/play1.png'">
+            <img id='playNaughtyBotsUnreg' src='/OneWeb/resources/images/play1_unregistered.png'>
+            <p id='naughtyBotsIntro2' class="alignLeft">
+                The game basically consists in robot fights inside an arena, robots are fully and easily 
+                customizables and the options for playability are local al networked. Supported controls 
+                are Keyboard and Joystick (standalone version also supports Wiimote).
+            </p>
+            <table id="videoSamplesTable" class="stretched">
+                <tr>
+                    <th colspan="3"><h1>Sample videos</h1><br/></th>
+                </tr>
+                <tr>
+                    <td class="alignRight">
+                        <img id='larrow1' src='/OneWeb/resources/images/larrow1.png' 
+                             onmouseover="this.src='/OneWeb/resources/images/larrow1hover.png'" 
+                             onmousedown="this.src='/OneWeb/resources/images/larrow1clicked.png'; prevVideo('video1')" 
+                             onmouseup="this.src='/OneWeb/resources/images/larrow1hover.png'" 
+                             onmouseout="this.src='/OneWeb/resources/images/larrow1.png'">
+                    </td>
+                    <td class="transparent5" id="video1td">
+                        <video id="video1" preload="metadata" controls onended="nextVideo('video1')"
+                               onplay="setOpacity('video1td', 1.0)" onpause="setOpacity('video1td', 0.5)">
+                            <source id='video1mp4'> </source>
+                            <source id='video1webm'> </source>
+                            <source id='video1ogv'> </source>
+                            Format or video not supported on browser, download it from
+                            <a href="/OneWeb/resources/videos/NaughtyBots_net_sample.mp4"> here </a>
+                        </video>
+                    </td>
+                    <td class="alignLeft">
+                        <img id='rarrow1' src='/OneWeb/resources/images/rarrow1.png' 
+                             onmouseover="this.src='/OneWeb/resources/images/rarrow1hover.png'" 
+                             onmousedown="this.src='/OneWeb/resources/images/rarrow1clicked.png'; nextVideo('video1')" 
+                             onmouseup="this.src='/OneWeb/resources/images/rarrow1hover.png'" 
+                             onmouseout="this.src='/OneWeb/resources/images/rarrow1.png'">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

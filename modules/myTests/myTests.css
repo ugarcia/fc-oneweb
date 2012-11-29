@@ -1,0 +1,6 @@
+
+div#canvasContainer {
+    width: 98%;
+    height: 480px;
+    border: 1px solid red;
+}

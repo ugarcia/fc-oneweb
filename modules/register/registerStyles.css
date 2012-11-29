@@ -1,0 +1,14 @@
+
+table#registerTable td {
+    text-align: left;
+}
+
+div {
+    padding-left: 35%;
+    padding-right: 30%;
+}
+
+td#registerSubmitTd {
+    padding-top: 20px;
+    text-indent: 30%;
+}
