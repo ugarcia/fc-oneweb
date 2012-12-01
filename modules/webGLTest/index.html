@@ -10,120 +10,135 @@
         
         <title>WebGL Test</title>
         
+        <link href="/OneWeb/common/css/vader/jquery-ui.css" rel="stylesheet">
         <link rel='stylesheet' href='/OneWeb/common/css/commonStyles.css'>
         <link rel='stylesheet' href='webGLTestStyles.css'>
         
         <script src='/OneWeb/common/js/common.js'></script>
         <script src='/OneWeb/common/js/jquery.js'></script>  
+        <script src='/OneWeb/common/js/jquery-ui.js'></script>  
         <script src='webGLTest.js'></script>
     </head>
 
     <body onload="startup()">
-        <div>
-            <table class="stretched alignCenter" id="tutorialTable">
-                <tr>
-                    <th colspan="8">
-                        <h2>Tutorial  'WebGL: Up and Running' Examples</h2> 
-                        <p class="alignRight"> &copy; Copyright 2012 Tony Parisi</p>
-                    </th>
-                </tr>
-                <tr>
-                    <th><h3>Chapter 1</h3></th>
-                    <th><h3>Chapter 2</h3></th>
-                    <th><h3>Chapter 3</h3></th>
-                    <th><h3>Chapter 4</h3></th>
-                    <th><h3>Chapter 5</h3></th>
-                    <th><h3>Chapter 6</h3></th>
-                    <th><h3>Chapter 7</h3></th>
-                    <th><h3>Chapter 8</h3></th>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 1/example1-1.html">Example 1-1</a>
-                    </td>
-                    <td>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 2/example2-1.html">Example 2-1</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 2/example2-2.html">Example 2-2</a>
-                    </td>
-                    <td>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 3/graphics-earth-basic.html">Example 3-1</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 3/graphics-earth-lit.html">Example 3-2</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 3/graphics-earth-shader.html">Example 3-3</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 3/graphics-earth-moon.html">Example 3-4</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 3/graphics-solar-system.html">Example 3-5</a>
-                    </td>
-                    <td>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/tween-basic.html">Example 4-1</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/tween-easing.html">Example 4-2</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/keyframe-simple.html">Example 4-3</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/keyframe-robot.html">Example 4-4</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/keyframe-material.html">Example 4-5</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/keyframe-lights.html">Example 4-6</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/keyframe-texture.html">Example 4-7</a>
-                    </td>
-                    <td>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 5/interaction-simple.html">Example 5-1</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 5/interaction-drag.html">Example 5-2</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 5/interaction-hitpoint.html">Example 5-3</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 5/interaction-camera-model.html">Example 5-4</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 5/interaction-camera-navigation.html">Example 5-5</a>
-                    </td>
-                    <td>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 6/integration-div.html">Example 6-1</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 6/integration-object.html">Example 6-2</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 6/integration-canvas.html">Example 6-3</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 6/integration-video.html">Example 6-4</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 6/integration-text.html">Example 6-5</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 6/integration-media.html">Example 6-6</a>
-                    </td>
-                    <td>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 7/production-loader-model.html">Example 7-1</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 7/production-loader-scene.html">Example 7-2</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 7/production-detect-webgl.html">Example 7-3</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 7/production-context-lost.html">Example 7-4</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 7/production-crossdomain-CORS.html">Example 7-5</a>
-                    </td>
-                    <td>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 8/game-graybox.html">Example 8-1</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 8/game-art-direction.html">Example 8-2</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 8/game-model-viewer.html">Example 8-3</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 8/game-particles.html">Example 8-4</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 8/game-sounds.html">Example 8-5</a><br/>
-                        <a href="/OneWeb/resources/webgl_tutorial/Chapter 8/game.html">Example 8-6</a>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <p id='webGLTestIntro1' class="alignLeft">
-            This table contains the examples extracted from the mentioned book 'WebGL: Up and Running'. 
-            In this very nice book the author explains the main methods and features for using the WebGL 
-            inside a HTML5 canvas thru some of the most popular libraries, as well as thru low level Javascript. 
-            It's highly recommended as it's the only seen resource that explains a so known library as Three.js, 
-            probably the most widely used for this purposes.
-        </p>
-        <p id='webGLTestIntro2' class="alignLeft">
-            Just click the links and see the examples inside this frame, it covers the basics of graphics and game 
-            development using the WebGL features.
-        </p>
         
-        <hr/>
+        <div id="webglTabs">
+            <ul>
+                <li><a href="#webglTabs-1">Tutorial</a></li>
+                <li><a href="#webglTabs-2">Three.js</a></li>
+            </ul>
         
-        <div>
-            <h2>Try the awsome js/three.js editor - &copy; Copyright 2012 Mr Doob </h2>
-            <a href="/OneWeb/resources/three.js/editor/index.html">Three Visual Editor</a>
+        
+            <div id="webglTabs-1">
+                <div>
+                    <table class="stretched alignCenter" id="tutorialTable">
+                        <tr>
+                            <th colspan="8">
+                                <h2>Tutorial  'WebGL: Up and Running' Examples</h2> 
+                                <p class="alignRight"> &copy; Copyright 2012 Tony Parisi</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><h3>Chapter 1</h3></th>
+                            <th><h3>Chapter 2</h3></th>
+                            <th><h3>Chapter 3</h3></th>
+                            <th><h3>Chapter 4</h3></th>
+                            <th><h3>Chapter 5</h3></th>
+                            <th><h3>Chapter 6</h3></th>
+                            <th><h3>Chapter 7</h3></th>
+                            <th><h3>Chapter 8</h3></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 1/example1-1.html">Example 1-1</a>
+                            </td>
+                            <td>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 2/example2-1.html">Example 2-1</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 2/example2-2.html">Example 2-2</a>
+                            </td>
+                            <td>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 3/graphics-earth-basic.html">Example 3-1</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 3/graphics-earth-lit.html">Example 3-2</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 3/graphics-earth-shader.html">Example 3-3</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 3/graphics-earth-moon.html">Example 3-4</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 3/graphics-solar-system.html">Example 3-5</a>
+                            </td>
+                            <td>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/tween-basic.html">Example 4-1</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/tween-easing.html">Example 4-2</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/keyframe-simple.html">Example 4-3</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/keyframe-robot.html">Example 4-4</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/keyframe-material.html">Example 4-5</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/keyframe-lights.html">Example 4-6</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 4/keyframe-texture.html">Example 4-7</a>
+                            </td>
+                            <td>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 5/interaction-simple.html">Example 5-1</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 5/interaction-drag.html">Example 5-2</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 5/interaction-hitpoint.html">Example 5-3</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 5/interaction-camera-model.html">Example 5-4</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 5/interaction-camera-navigation.html">Example 5-5</a>
+                            </td>
+                            <td>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 6/integration-div.html">Example 6-1</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 6/integration-object.html">Example 6-2</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 6/integration-canvas.html">Example 6-3</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 6/integration-video.html">Example 6-4</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 6/integration-text.html">Example 6-5</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 6/integration-media.html">Example 6-6</a>
+                            </td>
+                            <td>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 7/production-loader-model.html">Example 7-1</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 7/production-loader-scene.html">Example 7-2</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 7/production-detect-webgl.html">Example 7-3</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 7/production-context-lost.html">Example 7-4</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 7/production-crossdomain-CORS.html">Example 7-5</a>
+                            </td>
+                            <td>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 8/game-graybox.html">Example 8-1</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 8/game-art-direction.html">Example 8-2</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 8/game-model-viewer.html">Example 8-3</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 8/game-particles.html">Example 8-4</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 8/game-sounds.html">Example 8-5</a><br/>
+                                <a href="/OneWeb/resources/webgl_tutorial/Chapter 8/game.html">Example 8-6</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <p id='webGLTestIntro1' class="alignLeft">
+                    This table contains the examples extracted from the mentioned book 'WebGL: Up and Running'. 
+                    In this very nice book the author explains the main methods and features for using the WebGL 
+                    inside a HTML5 canvas thru some of the most popular libraries, as well as thru low level Javascript. 
+                    It's highly recommended as it's the only seen resource that explains a so known library as Three.js, 
+                    probably the most widely used for this purposes.
+                </p>
+                <p id='webGLTestIntro2' class="alignLeft">
+                    Just click the links and see the examples inside this frame, it covers the basics of graphics and game 
+                    development using the WebGL features.
+                </p>
+            </div>
+                    
+            <div id="webglTabs-2">
+                <div>
+                    <table class="stretched alignCenter" id="threeExamplesTable">
+                        <tr>
+                            <th colspan="5">
+                                <h2>Three.js Examples</h2> 
+                                <p class="alignRight"> &copy; Copyright 2012 Mr Doob</p>
+                            </th>
+                        </tr>
+                        <tr id='threeExampleFilesTr'>
+                        </tr>
+                    </table>
+                </div>
+                <br/>
+                <div>
+                    <h2>Try the awsome js/three.js editor - &copy; Copyright 2012 Mr Doob </h2>
+                    <a href="/OneWeb/resources/three.js/editor/index.html">Three Visual Editor</a>
+                </div>
+            </div>
+            
         </div>
-        <br/>
-        <div>
-            <table class="stretched alignCenter" id="threeExamplesTable">
-                <tr>
-                    <th colspan="5">
-                        <h2>Three.js Examples</h2> 
-                        <p class="alignRight"> &copy; Copyright 2012 Mr Doob</p>
-                    </th>
-                </tr>
-                <tr id='threeExampleFilesTr'>
-                </tr>
-            </table>
-        </div>
+        
     </body>
 </html>

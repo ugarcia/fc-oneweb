@@ -2,7 +2,7 @@
 const SERVER_THREE_EXAMPLES_PATH = "../resources/three.js/examples";
 const THREE_EXAMPLES_PATH = "../" + SERVER_THREE_EXAMPLES_PATH;
 
-var threeExamplesNumRows = 5;
+var threeExamplesNumRows = 3;
 
 function receiveMessage(evt) 
 {
@@ -29,6 +29,8 @@ function startup()
     window.addEventListener("message", receiveMessage, false);
     
     loadThreeExamples();
+    
+    $("#webglTabs").tabs();
 }
 
 function loadThreeExamples()
