@@ -13,11 +13,14 @@
         <link rel="shortcut icon" href="favicon.ico" />
         <link rel="apple-touch-icon" href="favicon.ico" />
         
+        <link rel="stylesheet" href="common/css/dark-hive/jquery-ui.css">
         <link rel='stylesheet' href='common/css/commonStyles.css'>
+        <link rel='stylesheet' href='mainStyles.css'>
+        
+        <script src="common/js/jquery.js"></script>
+        <script src="common/js/jquery-ui.js"></script>
         <script src="common/js/common.js"></script>
         <script src='common/js/md5.js'></script>
-        
-        <link rel='stylesheet' href='mainStyles.css'>
         <script src="main.js"></script>
     </head>
 
@@ -90,14 +93,26 @@
                 <tr id="contentRow">
                     <td id="navCell">
                         <nav class="alignLeft">
-                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/home/')">Home</a></p>
-                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/videos/')">Videos</a></p>
-                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/naughtyBots/')">Naugthy Bots</a></p>
-                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/canvasTest/')">Canvas Test</a></p>
-                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/webGLTest/')">WebGL Test</a></p>
-                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/jqueryTest/')">jquery Test</a></p>
-                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/objViewer/')">Model Viewer</a></p>
-                            <p><a href="Javascript:setFrameContent('contentFrame', 'modules/myTests/')">My Tests</a></p>
+                            <form style="margin-top: 1em;">
+                                <div id="radioset">
+                                    <input type="radio" id="navRadio1" name="navRadio" value="modules/home/" checked="checked">
+                                        <label for="navRadio1" class="corner-top-only stretchWidth">Home</label><br/>
+                                    <input type="radio" id="navRadio2" name="navRadio" value="modules/videos/">
+                                        <label for="navRadio2" class="stretchWidth">Videos</label><br/>
+                                    <input type="radio" id="navRadio3" name="navRadio" value="modules/naughtyBots/">
+                                        <label for="navRadio3" class="stretchWidth" >Naugthy Bots</label><br/>
+                                    <input type="radio" id="navRadio4" name="navRadio" value="modules/canvasTest/">
+                                        <label for="navRadio4" class="stretchWidth">Canvas Test</label><br/>
+                                    <input type="radio" id="navRadio5" name="navRadio" value="modules/webGLTest/">
+                                        <label for="navRadio5" class="stretchWidth">WebGL Test</label><br/>
+                                    <input type="radio" id="navRadio6" name="navRadio" value="modules/jqueryTest/">
+                                        <label for="navRadio6" class="stretchWidth">jquery Test</label><br/>
+                                    <input type="radio" id="navRadio7" name="navRadio" value="modules/objViewer/">
+                                        <label for="navRadio7" class="stretchWidth">Model Viewer</label><br/>
+                                    <input type="radio" id="navRadio8" name="navRadio" value="modules/myTests/">
+                                        <label for="navRadio8" class="corner-bottom-only stretchWidth">My Tests</label>
+                                </div>
+                            </form>
                         </nav>
                     </td>
                     <td id="contentCell">

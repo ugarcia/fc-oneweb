@@ -9,7 +9,7 @@ table#threeExamplesTable th,
 table#threeExamplesTable td,
 table#tutorialTable th,
 table#tutorialTable td {
-    border: 1px double #4466AA;
+    border: 2px double #4466AA;
 }
 
 table#threeExamplesTable td {

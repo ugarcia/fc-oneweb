@@ -1,9 +1,9 @@
 // Globals
-const MODELS_PATH = "/OneWeb/resources/models/";
+var MODELS_PATH = "/OneWeb/resources/models/";
 
-const numRows = 4, itemsPerRow = 4;
+var numRows = 4, itemsPerRow = 4;
 
-const shelfModel = { mesh: "shelf.obj", 
+var shelfModel = { mesh: "shelf.obj", 
                      materials: "shelf.mtl" };
 
 var container, renderer, scene, camera, projector,  

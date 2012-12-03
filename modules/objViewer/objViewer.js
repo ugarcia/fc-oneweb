@@ -1,6 +1,6 @@
 
-const CAM_MOVE_SMOOTH = 0.01;
-const baseModelsURL = "/OneWeb/resources/tmp/models/";
+var CAM_MOVE_SMOOTH = 0.01;
+var baseModelsURL = "/OneWeb/resources/tmp/models/";
 
 var container, camera, object, scene, renderer, 
     lastMousePos, submitFlag = false, modelFiles;

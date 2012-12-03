@@ -1,8 +1,7 @@
 
-const SERVER_THREE_EXAMPLES_PATH = "../resources/three.js/examples";
-const THREE_EXAMPLES_PATH = "../" + SERVER_THREE_EXAMPLES_PATH;
-
-var threeExamplesNumRows = 3;
+var SERVER_THREE_EXAMPLES_PATH = "../resources/three.js/examples";
+var THREE_EXAMPLES_PATH = "../" + SERVER_THREE_EXAMPLES_PATH;
+var MIN_PIXELS_PER_EXAMPLES_COLUMN = 400;
 
 function receiveMessage(evt) 
 {
@@ -41,6 +40,7 @@ function loadThreeExamples()
         data: "request=directoryFileList&directory=" + SERVER_THREE_EXAMPLES_PATH + "&ext=html", 
         success: function(response) {
             var fileList = getListFromRawData(response);
+            var threeExamplesNumCols =  Math.floor($(window).width() / MIN_PIXELS_PER_EXAMPLES_COLUMN);
             var cadHTML = "<td>";
             for(var i=0, j=fileList.length; i<j; i++) {
                 var aux = fileList[i].split(".");
@@ -49,11 +49,13 @@ function loadThreeExamples()
                     fileName += aux[k] + ".";
                 fileName += aux[aux.length-2];
                 cadHTML += "<a href='" + THREE_EXAMPLES_PATH + "/" + fileList[i] + "'>" + fileName + "</a><br/>";
-                if (Math.floor((i+1)%(j/threeExamplesNumRows))==0) 
+                if (Math.floor((i+1)%(j/threeExamplesNumCols))==0) 
                     cadHTML += "</td><td>"; 
             }
             cadHTML += "</td>"; 
             $("#threeExampleFilesTr").append(cadHTML);
+            var tmpHTML = $('#threeExamplesHeaderTh').html();
+            $('#threeExamplesHeaderTh').replaceWith('<th colspan=' + threeExamplesNumCols + '>' + tmpHTML + '</th>');
         }
     });
 }

@@ -7,7 +7,7 @@
 	if (isSet($_FILES['inputModel'])) {
 		foreach ($_FILES['inputModel']['name'] as $key=>$fileName) {
 			$fileTemp=$_FILES['inputModel']['tmp_name'][$key];
-			$fileDir = $TEMP_DIR + "tmp/models/".$fileName;
+			$fileDir = $TEMP_DIR."models/".$fileName;
 			if (!move_uploaded_file($fileTemp, $fileDir)) {
 				if ($success)
 					$success = false;
@@ -25,7 +25,7 @@
 	if ($success && isSet($_FILES['inputTextures'])) {
 		foreach ($_FILES['inputTextures']['name'] as $key=>$fileName) {
 			$fileTemp=$_FILES['inputTextures']['tmp_name'][$key];
-			$fileDir = $TEMP_DIR + "textures/".$fileName;
+			$fileDir = $TEMP_DIR."textures/".$fileName;
 			if (!move_uploaded_file($fileTemp, $fileDir)) {
 				if ($success)
 					$success = false;

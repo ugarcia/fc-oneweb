@@ -40,41 +40,6 @@ table#footerTable td {
 td#navCell {
     width: 10%;
     vertical-align: top;
-    text-indent: 3%;
-}
-
-td#navCell nav * {
-    border-radius: 15px;
-    margin-top: 10px;
-    text-decoration: none;
-    font-size: 14pt;
-    color: #800000;
-    transform: skewX(15deg);
-    -ms-transform: skewX(15deg); /* IE 9 */
-    -moz-transform: skewX(15deg); /* Firefox */
-    -webkit-transform: skewX(15deg); /* Safari and Chrome */
-    -o-transform: skewX(15deg);/* Opera */
-}
-
-td#navCell * :hover {
-    font-size: 16pt;
-    color: #FF0000;
-    transform: skewX(-30deg);
-    -ms-transform: skewX(-30deg); /* IE 9 */
-    -moz-transform: skewX(-30deg); /* Firefox */
-    -webkit-transform: skewX(-30deg); /* Safari and Chrome */
-    -o-transform: skewX(-30deg);/* Opera */
-}
-
-td#navCell a {
-    padding: 0px 5px;
-}
-
-
-td#navCell * :focus {
-    background-color: rgba(255, 255, 255, 0.1);
-    font-size: 16pt;
-    color: #FF0000;
 }
 
 iframe#contentFrame {

@@ -1,5 +1,5 @@
 
-const SERVER_REQUESTS_PATH = "/OneWeb/srvRequests/";
+var SERVER_REQUESTS_PATH = "/OneWeb/srvRequests/";
 
 var session = { logged: false, 
                 user: '', 
@@ -20,6 +20,7 @@ function fitElementHeight(elem, next, buffer)
     if(elm==null || elm==undefined)
         return;
     var height = window.innerHeight || document.body.offsetHeight || document.documentElement.clientHeight;
+    //alert($(window).height() + "," + height);
     var next = document.getElementById(next);
     if(next!=null && next!=undefined)
         height -= next.offsetHeight;
@@ -53,33 +54,14 @@ function elementSupportsAttribute(element, attribute) {
     }
 }
 
-// 'XMLHttpRequest' object for requests to a Server PHP Script
-function getAjax(requestedURL) {
-    var myAjax=false;
-    if (window.XMLHttpRequest) {
-        myAjax = new XMLHttpRequest();
-    } else if (window.ActiveXObject) {
-        try {
-            myAjax = newActiveXObject("Msxml2.XMLHTTP");
-        } catch(e) {
-            try {
-                myAjax = newActiveXObject("Microsoft.XMLHTTP");
-            } catch(e) {}
-        }
-    }
-    myAjax.open("POST",requestedURL,false);
-    myAjax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=ISO-8859-1');
-    return myAjax;
-}
-
 function checkSession(callback) 
 {
-    var req = getAjax(SERVER_REQUESTS_PATH + 'authRequests.php');
-    req.onreadystatechange = function() {
-        if (req.readyState==4 && (req.status==200||
-          window.location.href.indexOf("http")==-1)) {
-            var response = req.responseText.replace(/^\s+|\s+$/g,"");
-            var aResp = response.split("@");
+    $.ajax({
+        type: "post", 
+        url: SERVER_REQUESTS_PATH + "authRequests.php", 
+        data: "request=checksession", 
+        success: function(response) {
+            var aResp = response.replace(/^\s+|\s+$/g,"").split("@");
             var session = { logged: false, 
                             user: '', 
                             status: '' };
@@ -89,17 +71,15 @@ function checkSession(callback)
                 session.user = aParam[0];
                 session.status = aParam[1];
             }
-            callback(session);        
-        }   
-    }
-    var cadPOST = "request=checksession";
-    req.send(cadPOST); 
+            callback(session);
+        }
+    }); 
 }
 
 function checkAccess() 
 {
     if (location == parent.location)
-    location.href = '/OneWeb'; 
+        location.href = '/OneWeb'; 
 }
 
 function getListFromRawData(rawData)
