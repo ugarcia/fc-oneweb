@@ -1,5 +1,7 @@
 // Globals
 var MODELS_PATH = "/OneWeb/resources/models/";
+var JSON_PATH = "/OneWeb/common/json/";
+
 
 var numRows = 4, itemsPerRow = 4;
 
@@ -31,7 +33,7 @@ function receiveMessage(evt)
     initGL();
     animate();
     
-    parseJSON(SERVER_REQUESTS_PATH + "jsonRequests.php");
+    parseJSON(JSON_PATH + "json_test.json");
 }
 
 // Handle session status
@@ -59,7 +61,7 @@ function startup()
     initGL();
     animate();
     
-    parseJSON(SERVER_REQUESTS_PATH + "jsonRequests.php");  
+    parseJSON(JSON_PATH + "json_test.json");  
 }
 
 // Asynchronous JSON GET
