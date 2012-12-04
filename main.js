@@ -13,10 +13,18 @@ function startup()
         document.getElementById('contentFrame').contentWindow.postMessage(session, '*');
     });
     
+    var worker = new Worker('clockTask.js');
+    worker.onmessage = function(event) { 
+        $('#currDateDiv').html('<time datetime="' + event.data + '" pubdate>' + event.data.toLocaleString() + '</time>');
+    };
+    worker.postMessage('clock');
+        
     $("#radioset").buttonset().change(function() {
         $("#contentFrame").attr('src', $('input[name=navRadio]:checked').val()); 
     });   
 }
+
+
 
 function validateLogin()
 {
