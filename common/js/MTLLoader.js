@@ -4,12 +4,14 @@
  * @author angelxuanchang
  */
 
-THREE.MTLLoader = function( baseUrl, options ) {
+THREE.MTLLoader = function( baseUrl, localLoad, textureURIs, options ) {
 
     THREE.EventTarget.call( this );
     this.baseUrl = baseUrl;
     this.options = options;
-
+	this.localLoad = localLoad;
+	this.textureURIs = textureURIs;
+	
 };
 
 THREE.MTLLoader.prototype = {
@@ -121,8 +123,7 @@ THREE.MTLLoader.prototype = {
             }
 
         }
-
-        var materialCreator = new THREE.MTLLoader.MaterialCreator( this.baseUrl, this.options );
+        var materialCreator = new THREE.MTLLoader.MaterialCreator( this.baseUrl, this.localLoad, this.textureURIs, this.options );
         materialCreator.setMaterials( materialsInfo );
         return materialCreator;
 
@@ -146,9 +147,11 @@ THREE.MTLLoader.prototype = {
  *                                      Default: false (d = 1 is fully opaque)
  * @constructor
  */
-THREE.MTLLoader.MaterialCreator = function( baseUrl, options ) {
+THREE.MTLLoader.MaterialCreator = function( baseUrl, localLoad, textureURIs, options ) {
 
     THREE.EventTarget.call( this );
+	this.localLoad = localLoad;
+	this.textureURIs = textureURIs;
     this.baseUrl = baseUrl;
     this.options = options;
     this.materialsInfo = {};
@@ -344,8 +347,9 @@ THREE.MTLLoader.MaterialCreator.prototype = {
                 case 'map_kd':
 
                     // Diffuse texture map
-
-                    params[ 'map' ] = THREE.MTLLoader.loadTexture( this.baseUrl + value );
+					loadURI = this.localLoad ? this.textureURIs[value.substr( value.lastIndexOf( "/" ) + 1,  value.length - 1 )] : this.baseUrl + value;
+					//alert("Loading diffuse texture " + value + " in temp URL " + loadURI);
+                    params[ 'map' ] = THREE.MTLLoader.loadTexture( loadURI );
                     params[ 'map' ].wrapS = this.wrap;
                     params[ 'map' ].wrapT = this.wrap;
 

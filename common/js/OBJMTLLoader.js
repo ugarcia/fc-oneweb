@@ -5,10 +5,9 @@
  * @author angelxuanchang
  */
 
-THREE.OBJMTLLoader = function ( ) {
+THREE.OBJMTLLoader = function ( textureURIs ) {
 
 	THREE.EventTarget.call( this );
-
 };
 
 THREE.OBJMTLLoader.prototype = {
@@ -30,7 +29,7 @@ THREE.OBJMTLLoader.prototype = {
      *
      */
 
-	load: function ( url, mtlfileurl, options ) {
+	load: function ( url, mtlfileurl, localLoad, textureURIs, options ) {
 
 		var scope = this;
 		var xhr = new XMLHttpRequest();
@@ -40,8 +39,7 @@ THREE.OBJMTLLoader.prototype = {
         var materialsCreator;  // Material creator is created when MTL file is loaded
 
         // Loader for MTL
-
-        var mtlLoader = new THREE.MTLLoader( url.substr( 0, url.lastIndexOf( "/" ) + 1 ), options );
+        var mtlLoader = new THREE.MTLLoader( url.substr( 0, url.lastIndexOf( "/" ) + 1 ), localLoad, textureURIs , options );
         mtlLoader.addEventListener( 'load', waitReady );
         mtlLoader.addEventListener( 'error', waitReady );
 

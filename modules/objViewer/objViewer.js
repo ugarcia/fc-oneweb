@@ -3,7 +3,7 @@ var CAM_MOVE_SMOOTH = 0.01;
 var baseModelsURL = "/OneWeb/resources/tmp/models/";
 
 var container, camera, object, scene, renderer, 
-    lastMousePos, submitFlag = false, modelFiles, modelURIs;
+    lastMousePos, submitFlag = false, modelFiles, modelURIs, textureURIs;
 
 function receiveMessage(evt) 
 {
@@ -22,19 +22,7 @@ function updateSessionStatus()
         // TODO
     }
 } 
-
-function loadFileList(files, target) {
-    var output = [];
-    modelURIs = [];
-    for (var i = 0, f; f = files[i]; i++) {
-        modelURIs[i] = URL.createObjectURL(f);
-      output.push('<li><strong>', f.name, '</strong> (', f.type || 'n/a', ') - ',
-                  f.size, ' bytes, last modified: ',
-                  f.lastModifiedDate.toLocaleDateString(), '</li>');
-    }
-    $('#'+target).html('<ul>' + output.join('') + '</ul>');
-}
-                                
+                       
 function startup()
 {
     checkAccess();
@@ -45,15 +33,34 @@ function startup()
     window.addEventListener("message", receiveMessage, false);
     
     $('#inputModel').change(function(event) {
-        loadFileList(event.target.files, 'modelFilesTd');
+        var output = [];
+		modelURIs = [];
+		for (var i = 0, f; f = event.target.files[i]; i++) {
+			modelURIs[f.name] = URL.createObjectURL(f);
+			output.push('<li>', f.name, ' - ', f.size, ' bytes </li>');
+		}
+		$('#modelFilesTd').html('<ul>' + output.join('') + '</ul>');
     });
-    
+	
+	$('#inputTextures').change(function(event) {
+		var output = [];
+		textureURIs = [];
+		for (var i = 0, f; f = event.target.files[i]; i++) {
+			textureURIs[f.name] = URL.createObjectURL(f);
+			output.push('<tr><td style="text-align:left"><li style="margin-left:10px">', f.name, ' - ', f.size, ' bytes</li></td>',
+						'<td style="text-align:right">Type: &nbsp; <select id="matSelect">', 
+						'<option id="diffuseOption" value="diffuse">DIFFUSE</option>', 
+                	    '<option id="ambientOption" value="ambient">AMBIENT</option>', 
+                	    '<option id="specularOption" value="specular">SPECULAR</option>', 
+                	    '</select>',  '</td></tr>');
+		}
+		$('#textureFilesTd').html('<table class = "texturesTable">' + output.join('') + '</table>');
+    });
+   
     fitElementHeight("glContainer", 'footerRow', 30);
     initGL();
     animate();
 }
-
-
 
 function initGL() 
 {
@@ -151,11 +158,11 @@ function loadModel()
         for (var i = 0; i < modelFiles.length; i++) {
             var aux =  modelFiles.item(i).name.split(".");
             if (aux[aux.length-1] == 'obj')
-                objFile = modelURIs[i];// baseModelsURL + modelFiles.item(i).name;
+                objFile = modelURIs[modelFiles.item(i).name];// baseModelsURL + modelFiles.item(i).name;
             else if (aux[aux.length-1] == 'mtl')
-                mtlFile = modelURIs[i];// baseModelsURL + modelFiles.item(i).name;
+                mtlFile = modelURIs[modelFiles.item(i).name];// baseModelsURL + modelFiles.item(i).name;
         }
-        loader.load( objFile, mtlFile );
+        loader.load( objFile, mtlFile, true, textureURIs );
     }  else if (selectedOption == 'json') {
         var loader = new THREE.JSONLoader();
         var objFile;

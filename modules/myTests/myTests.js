@@ -2,7 +2,6 @@
 var MODELS_PATH = "/OneWeb/resources/models/";
 var JSON_PATH = "/OneWeb/common/json/";
 
-
 var numRows = 4, itemsPerRow = 4;
 
 var shelfModel = { mesh: "shelf.obj", 

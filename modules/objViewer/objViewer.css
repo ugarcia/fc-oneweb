@@ -4,6 +4,7 @@ div#glContainer {
     height: 480px;
     border: 1px solid red;
     border-radius: 15px;
+	margin-top: 10px;
 }
 
 table#inputsTable {
@@ -12,6 +13,7 @@ table#inputsTable {
 
 table#inputsTable td {
     padding: 0px 10px;
+	margin: 0px;
 }
 
 table#inputsTable p {
@@ -26,11 +28,16 @@ td#selectTd {
 
 td#inputModelTd, 
 td#inputTexturesTd {
-    width: 30%;
+    width: 33%;
 }
 
 td#submitTd {
     text-align: left;
+}
+
+table#inputsTable td  ul{
+	text-align: left;
+	margin: 0px 0px 5px 5px;
 }
 
 iframe#dummyFrame {
