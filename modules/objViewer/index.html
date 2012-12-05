@@ -27,27 +27,36 @@
 	    <form id ='modelForm' target='dummyFrame' enctype='multipart/form-data' method="post" 
 	          action='/OneWeb/srvRequests/fileUploadRequests.php' onsubmit="submitModel()">
 	        <iframe id = 'dummyFrame' name = 'dummyFrame' onload='loadModel()'> </iframe>
-    	    <table id = 'inputsTable'><tr>
-        	    <td id = 'selectTd'><p>
-        	        File Type: &nbsp; &nbsp;
-            	    <select id="typeSelect"> 
-            	       <option id='objOption' value='obj'>OBJ</option>
-            	       <option id='jsonOption' value='json'>JSON</option>
-            	       <option id='daeOption' value='dae'>DAE</option>
-            	    </select>
-            	</p></td>
-            	<td id = 'inputModelTd'><p>
-                    Model: &nbsp; &nbsp;
-                    <input type='file' id="inputModel" name="inputModel[]" size=30 multiple/> 
-                </p></td>
-            	<td id = 'inputTexturesTd'><p>
-            	    Textures: &nbsp; &nbsp;
-                    <input type='file' id="inputTextures" name="inputTextures[]"size=30 multiple/> 
-                </p></td>
-                <td id = 'submitTd'>
-                    <input type='submit' id="submitButton" value="View"/> 
-                </td>
-    	    </tr></table>
+    	    <table id = 'inputsTable'>
+    	        <tr>
+            	    <td id = 'selectTd'><p>
+            	        File Type: &nbsp; &nbsp;
+                	    <select id="typeSelect"> 
+                	       <option id='objOption' value='obj'>OBJ</option>
+                	       <option id='jsonOption' value='json'>JSON</option>
+                	       <option id='daeOption' value='dae'>DAE</option>
+                	    </select>
+                	</p></td>
+                	<td id = 'inputModelTd'><p>
+                        Model: &nbsp; &nbsp;
+                        <input type='file' id="inputModel" name="inputModel[]" size=30 multiple/> 
+                    </p></td>
+                	<td id = 'inputTexturesTd'><p>
+                	    Textures: &nbsp; &nbsp;
+                        <input type='file' id="inputTextures" name="inputTextures[]"size=30 multiple/> 
+                    </p></td>
+                    <td id = 'submitTd'>
+                        <input type='submit' id="submitButton" value="View"/> 
+                    </td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td id = 'modelFilesTd'> </td>
+                    <td id = 'textureFilesTd'> </td>
+                    <td> </td>
+               </tr>
+    	       
+    	    </table>
     	    <div id = 'glContainer'>
 	    </div>
 	    </form>

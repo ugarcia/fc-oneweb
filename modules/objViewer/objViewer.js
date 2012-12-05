@@ -3,7 +3,7 @@ var CAM_MOVE_SMOOTH = 0.01;
 var baseModelsURL = "/OneWeb/resources/tmp/models/";
 
 var container, camera, object, scene, renderer, 
-    lastMousePos, submitFlag = false, modelFiles;
+    lastMousePos, submitFlag = false, modelFiles, modelURIs;
 
 function receiveMessage(evt) 
 {
@@ -22,6 +22,18 @@ function updateSessionStatus()
         // TODO
     }
 } 
+
+function loadFileList(files, target) {
+    var output = [];
+    modelURIs = [];
+    for (var i = 0, f; f = files[i]; i++) {
+        modelURIs[i] = URL.createObjectURL(f);
+      output.push('<li><strong>', f.name, '</strong> (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate.toLocaleDateString(), '</li>');
+    }
+    $('#'+target).html('<ul>' + output.join('') + '</ul>');
+}
                                 
 function startup()
 {
@@ -32,11 +44,16 @@ function startup()
     });
     window.addEventListener("message", receiveMessage, false);
     
+    $('#inputModel').change(function(event) {
+        loadFileList(event.target.files, 'modelFilesTd');
+    });
+    
     fitElementHeight("glContainer", 'footerRow', 30);
     initGL();
     animate();
-    
 }
+
+
 
 function initGL() 
 {
@@ -134,9 +151,9 @@ function loadModel()
         for (var i = 0; i < modelFiles.length; i++) {
             var aux =  modelFiles.item(i).name.split(".");
             if (aux[aux.length-1] == 'obj')
-                objFile = baseModelsURL + modelFiles.item(i).name;
+                objFile = modelURIs[i];// baseModelsURL + modelFiles.item(i).name;
             else if (aux[aux.length-1] == 'mtl')
-                mtlFile = baseModelsURL + modelFiles.item(i).name;
+                mtlFile = modelURIs[i];// baseModelsURL + modelFiles.item(i).name;
         }
         loader.load( objFile, mtlFile );
     }  else if (selectedOption == 'json') {
@@ -171,6 +188,13 @@ function loadModel()
 function submitModel()
 {
     modelFiles = document.getElementById("inputModel").files;
+    
+    //TODO review this!!
+    submitFlag = true;
+    return false;
+    
+    
+    
     if (modelFiles) {
         //var dummyFrame = document.getElementById('dummyFrame');
         //dummyFrame.style.display='block';
