@@ -8,7 +8,7 @@
         <meta name="author" content="unai" />
         <meta name="viewport" content="width=device-width; initial-scale=1.0" />
         
-        <title>js/three.js OBJ viewer</title>
+        <title>3D Models Viewer</title>
         
         <link rel='stylesheet' href='/OneWeb/common/css/commonStyles.css'>
         <link rel='stylesheet' href='objViewer.css'>
@@ -24,8 +24,9 @@
 	</head>
 
 	<body onload="startup()">
+		<!-- TODO change the following to only local when eveerything integrated (remove iFrame and cleanup submit)-->
 	    <form id ='modelForm' target='dummyFrame' enctype='multipart/form-data' method="post" 
-	          action='/OneWeb/srvRequests/fileUploadRequests.php' onsubmit="submitModel()">
+	          action='/OneWeb/srvRequests/fileUploadRequests.php' onsubmit="return submitModel()">
 	        <iframe id = 'dummyFrame' name = 'dummyFrame' onload='loadModel()'> </iframe>
     	    <table id = 'inputsTable'>
     	        <tr>
@@ -54,8 +55,7 @@
                     <td id = 'modelFilesTd'> </td>
                     <td id = 'textureFilesTd'> </td>
                     <td> </td>
-               </tr>
-    	       
+               </tr> 
     	    </table>
     	    <div id = 'glContainer'>
 	    </div>

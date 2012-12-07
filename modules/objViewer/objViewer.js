@@ -158,11 +158,12 @@ function loadModel()
         for (var i = 0; i < modelFiles.length; i++) {
             var aux =  modelFiles.item(i).name.split(".");
             if (aux[aux.length-1] == 'obj')
-                objFile = modelURIs[modelFiles.item(i).name];// baseModelsURL + modelFiles.item(i).name;
+                objFile = modelURIs[modelFiles.item(i).name];// baseModelsURL + modelFiles.item(i).name; -- Old server stuff
             else if (aux[aux.length-1] == 'mtl')
-                mtlFile = modelURIs[modelFiles.item(i).name];// baseModelsURL + modelFiles.item(i).name;
+                mtlFile = modelURIs[modelFiles.item(i).name];// baseModelsURL + modelFiles.item(i).name; -- Old server stuff
         }
         loader.load( objFile, mtlFile, true, textureURIs );
+		// TODO integrate JSON models into local loading system
     }  else if (selectedOption == 'json') {
         var loader = new THREE.JSONLoader();
         var objFile;
@@ -174,6 +175,7 @@ function loadModel()
         loader.load( objFile , function( geometry ) { 
             scene.add( new THREE.Mesh( geometry, new THREE.MeshFaceMaterial() ) );
         } );
+		// TODO integrate COLLADA models into local loading system
     }  else if (selectedOption == 'dae') {
         var loader = new THREE.ColladaLoader();
         loader.options.convertUpAxis = true;
@@ -196,12 +198,15 @@ function submitModel()
 {
     modelFiles = document.getElementById("inputModel").files;
     
-    //TODO review this!!
+    // TODO review all this!!
+	
+	// New Local stuff
     submitFlag = true;
+	loadModel();
     return false;
     
-    
-    
+    // Old server stuff
+	/*
     if (modelFiles) {
         //var dummyFrame = document.getElementById('dummyFrame');
         //dummyFrame.style.display='block';
@@ -211,4 +216,5 @@ function submitModel()
         alert('No file model selected!');
         return false;
     }
+	*/
 }
