@@ -5,9 +5,9 @@
                      'register' => 2, 
 					 'logout' => 3 );
 	session_start();
-	$mysqlConn = @mysql_connect('localhost','root','')
+	$mysqlConn = @mysql_connect('localhost','ac3jyz8c_root','admin')
 					or die('No se pudo conectar a mySQL');
-	$mysqlDB = @mysql_select_db('one_db')
+	$mysqlDB = @mysql_select_db('ac3jyz8c_one_db')
 					or die('No se pudo recuperar la BD');
 	
 	if (isSet($_POST['request'])) {

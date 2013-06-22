@@ -1,0 +1,7 @@
+resources
+*.project
+.settings
+.metadata
+.idea
+*.iml
+*.log

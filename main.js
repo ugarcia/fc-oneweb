@@ -32,8 +32,6 @@ function validateLogin()
         var loginUser = document.getElementById('loginUser').value;
         var loginPassword = document.getElementById('loginPassword').value;
         doLogin(loginUser, loginPassword);
-    } else {
-        doLogout();
     }    
     return false;
 }
