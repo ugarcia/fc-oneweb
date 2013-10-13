@@ -5,6 +5,11 @@ body {
     text-align: center;
 }
 
+#headerLogoDiv img {
+    width: 4em;
+    height: 4em;
+}
+
 header, footer {
     padding: 5px;
 }

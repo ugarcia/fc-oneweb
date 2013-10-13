@@ -1,0 +1,13 @@
+#cocos2d-header {
+    font-size: 20pt;
+}
+
+#cocos2d-header p {
+    margin: 0;
+    float: right;
+    font-size: 15pt;
+}
+
+#cocos2dTabs iframe {
+    border: none;
+}

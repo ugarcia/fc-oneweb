@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="description" content="" />
         <meta name="author" content="unai" />
-        <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 
         <title>OneWeb</title>
         
@@ -21,19 +21,24 @@
         <script src="common/js/jquery-ui.js"></script>
         <script src="common/js/common.js"></script>
         <script src='common/js/md5.js'></script>
-        <script src="clockTask.js"></script>
+        <script src="common/js/clockTask.js"></script>
         <script src="main.js"></script>
     </head>
 
-    <body onload="startup()">
+    <body onload="startup();">
         <div class="stretched">
             <table id="mainTable" class="stretched alignCenter">
                 <tr id="headerRow">
                     <td  class="fullCollapsed" colspan="2">
                         <header>
                             <table class="stretched" id="headerTable">
-                                <form id='loginForm' onsubmit="return validateLogin()">
+                                <form id='loginForm' onsubmit="return validateLogin();">
                                     <tr>
+                                        <td id='headerLogo'>
+                                            <div id='headerLogoDiv'>
+                                                <img src='resources/images/fc256.png'>
+                                            </div>
+                                        </td>
                                         <td id='headerLeft'>
                                             <div id='currDateDiv'></div>
                                         </td>
@@ -98,20 +103,14 @@
                                 <div id="radioset">
                                     <input type="radio" id="navRadio1" name="navRadio" value="modules/home/" checked="checked">
                                         <label for="navRadio1" class="corner-top-only stretchWidth">Home</label><br/>
-                                    <input type="radio" id="navRadio2" name="navRadio" value="modules/videos/">
-                                        <label for="navRadio2" class="stretchWidth">Videos</label><br/>
-                                    <input type="radio" id="navRadio3" name="navRadio" value="modules/naughtyBots/">
-                                        <label for="navRadio3" class="stretchWidth" >Naugthy Bots</label><br/>
-                                    <input type="radio" id="navRadio4" name="navRadio" value="modules/canvasTest/">
-                                        <label for="navRadio4" class="stretchWidth">Canvas Test</label><br/>
+                                    <input type="radio" id="navRadio2" name="navRadio" value="modules/unity3d/">
+                                        <label for="navRadio2" class="stretchWidth">Unity 3D</label><br/>
+                                    <input type="radio" id="navRadio3" name="navRadio" value="modules/cocos2d-html5/">
+                                        <label for="navRadio3" class="stretchWidth">Cocos2D HTML5</label><br/>
+                                    <input type="radio" id="navRadio4" name="navRadio" value="modules/construct2/">
+                                        <label for="navRadio4" class="stretchWidth">Construct 2</label><br/>
                                     <input type="radio" id="navRadio5" name="navRadio" value="modules/webGLTest/">
-                                        <label for="navRadio5" class="stretchWidth">WebGL Test</label><br/>
-                                    <input type="radio" id="navRadio6" name="navRadio" value="modules/jqueryTest/">
-                                        <label for="navRadio6" class="stretchWidth">jquery Test</label><br/>
-                                    <input type="radio" id="navRadio7" name="navRadio" value="modules/objViewer/">
-                                        <label for="navRadio7" class="stretchWidth">Model Viewer</label><br/>
-                                    <input type="radio" id="navRadio8" name="navRadio" value="modules/myTests/">
-                                        <label for="navRadio8" class="corner-bottom-only stretchWidth">My Tests</label>
+                                        <label for="navRadio5" class="corner-bottom-only stretchWidth">WebGL</label><br/>
                                 </div>
                             </form>
                         </nav>
@@ -130,7 +129,7 @@
                                         <a href="Javascript: setFrameContent('contentFrame', 'modules/contact/')">Contact</a>
                                     </td>
                                     <td class="alignRight fullCollapsed">
-                                        <p class="fullCollapsed">&copy; Copyright  by Unai</p>
+                                        <p class="fullCollapsed">&copy; Copyright  by FrontCoder</p>
                                     </td>
                                 </tr>
                             </table>

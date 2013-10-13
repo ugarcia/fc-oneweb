@@ -13,7 +13,7 @@ function startup()
         document.getElementById('contentFrame').contentWindow.postMessage(session, '*');
     });
     
-    var worker = new Worker('clockTask.js');
+    var worker = new Worker('common/js/clockTask.js');
     worker.onmessage = function(event) { 
         $('#currDateDiv').html('<time datetime="' + event.data + '" pubdate>' + event.data.toLocaleString() + '</time>');
     };
@@ -21,7 +21,10 @@ function startup()
         
     $("#radioset").buttonset().change(function() {
         $("#contentFrame").attr('src', $('input[name=navRadio]:checked').val()); 
-    });   
+    });
+
+    // Set the home page as the first
+    $("#contentFrame").attr('src', 'modules/home/');
 }
 
 

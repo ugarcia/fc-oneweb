@@ -1,34 +1,34 @@
-
 var SERVER_THREE_EXAMPLES_PATH = "../resources/three.js/examples";
 var THREE_EXAMPLES_PATH = "../" + SERVER_THREE_EXAMPLES_PATH;
 var MIN_PIXELS_PER_EXAMPLES_COLUMN = 400;
 
-function receiveMessage(evt) 
+function receiveMessage(evt)
 {
     session = evt.data;
     updateSessionStatus();
+    fitElementHeight("glContainer", 'footerRow', 30);
 }
- 
-function updateSessionStatus() 
+
+function updateSessionStatus()
 {
     if (session.logged) {
         // TODO
     } else {
         // TODO
     }
-} 
-                                
+}
+
 function startup()
 {
     checkAccess();
     checkSession(function(data) {
-       session = data;
-       updateSessionStatus();
+        session = data;
+        updateSessionStatus();
     });
     window.addEventListener("message", receiveMessage, false);
-    
+
     loadThreeExamples();
-    
+
     $("#webglTabs").tabs();
 }
 
