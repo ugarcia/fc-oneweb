@@ -4,7 +4,7 @@ class window.ThreeApp
   camera: null
   scene: null
   renderer: null
-  fps: 25
+  fps: 40
   lastFrameTime: 0
   clock: null
   dae: null
@@ -14,21 +14,26 @@ class window.ThreeApp
     @container = document.getElementById(containerId)
     @urlRoot = urlRoot ? @urlRoot
     require ["#{@urlRoot}/lib/js/three.min.js"], () =>
-      require ["#{@urlRoot}/lib/js/physi.js"], () =>
-        Physijs.scripts.worker = "#{@urlRoot}/lib/js/physijs_worker.js"
-        Physijs.scripts.ammo = "#{@urlRoot}/lib/js/ammo.js"
-        console.log Physijs
-        require ["#{@urlRoot}/js/three.ext.js"], () =>
-          require ["#{@urlRoot}/js/physi.ext.js"], () => @load()
+      require ["#{@urlRoot}/lib/js/simplex-noise.js"], () =>
+        require ["#{@urlRoot}/lib/js/physi.js"], () =>
+          Physijs.scripts.worker = "#{@urlRoot}/lib/js/physijs_worker.js"
+          Physijs.scripts.ammo = "#{@urlRoot}/lib/js/ammo.js"
+          console.log Physijs
+          require ["#{@urlRoot}/js/three.ext.js"], () =>
+            require ["#{@urlRoot}/js/physi.ext.js"], () => @load()
 
   load: ->
     # -------------- Load objects ---------------
     require ["#{@urlRoot}/js/ColladaObject.js"], () =>
-      @dae = new ColladaObject @, "#{@urlRoot}/models/zombie01/zombie.dae", 0.05, true,
-        walk: { start: 0, end: 27, looping: true }
-        idle: { start: 28, end: 84, looping: true }
-        attack: { start: 85, end: 106, looping: false }
-      @dae.load () => @init()
+      require ["#{@urlRoot}/js/TerrainColladaObject.js"], () =>
+        require ["#{@urlRoot}/js/SkinnedColladaObject.js"], () =>
+          @dae = new SkinnedColladaObject @, "#{@urlRoot}/models/zombie01/zombie.dae", 0.05, true,
+            walk: { start: 0, end: 27, looping: true }
+            idle: { start: 28, end: 84, looping: true }
+            attack: { start: 85, end: 106, looping: false }
+          @dae.load () =>
+            @daeMountain = new TerrainColladaObject @, "#{@urlRoot}/models/mountain01/mountain.dae", 0.01, true, null
+            @daeMountain.load () => @init()
 
   init: ->
     @lastFrameTime = 0
@@ -42,11 +47,28 @@ class window.ThreeApp
     # -------------- Physic Grid ---------------
     ground_material = Physijs.createMaterial(
       new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("#{@urlRoot}/images/rocks.jpg") })
-      .4  #med friction
-      .4  #low restitution
+      .2  #med friction
+      .7  #low restitution
     )
     ground_material.map.wrapS = ground_material.map.wrapT = THREE.RepeatWrapping
-    ground_material.map.repeat.set(5, 5)
+    ground_material.map.repeat.set(2.5, 2.5)
+
+    ###
+    NoiseGen = new SimplexNoise;
+    ground_geometry = new THREE.PlaneGeometry( 75, 75, 50, 50 );
+    for i in [0..ground_geometry.vertices.length-1]
+      do (i) ->
+        vertex = ground_geometry.vertices[i];
+        vertex.z = NoiseGen.noise( vertex.x / 10, vertex.y / 10 ) * 0.3
+    ground_geometry.computeFaceNormals()
+    ground_geometry.computeVertexNormals()
+    # If your plane is not square as far as face count then the HeightfieldMesh
+    # takes two more arguments at the end: # of x faces and # of y faces that were passed to THREE.PlaneMaterial
+    ground = new Physijs.HeightfieldMesh(ground_geometry, ground_material,0, 50, 50);
+    ground.rotation.x = Math.PI / -2
+    ground.receiveShadow = true
+    ###
+
     ground = new Physijs.BoxMesh(new THREE.CubeGeometry(20, 1, 20), ground_material, 0)
     ground.position.y = -2
     @scene.add ground
@@ -75,6 +97,8 @@ class window.ThreeApp
     @container.appendChild @renderer.domElement
 
     # -------------- Scene Objects ---------------
+
+    #@daeMountain.init @scene
     @dae.init @scene
 
     # -------------- Camera ---------------

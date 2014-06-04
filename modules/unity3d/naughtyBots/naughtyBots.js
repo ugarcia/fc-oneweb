@@ -79,5 +79,5 @@ function prevVideo(elem)
 
 function naughtyBotsPlay()
 {
-    location.href = 'naughtyBots/';
+    location.href = '/games/naughtybots/';
 }

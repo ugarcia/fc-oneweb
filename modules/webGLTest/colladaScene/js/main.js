@@ -13,7 +13,7 @@
 
     ThreeApp.prototype.renderer = null;
 
-    ThreeApp.prototype.fps = 25;
+    ThreeApp.prototype.fps = 40;
 
     ThreeApp.prototype.lastFrameTime = 0;
 
@@ -29,13 +29,15 @@
       this.container = document.getElementById(containerId);
       this.urlRoot = urlRoot != null ? urlRoot : this.urlRoot;
       require(["" + this.urlRoot + "/lib/js/three.min.js"], function() {
-        return require(["" + _this.urlRoot + "/lib/js/physi.js"], function() {
-          Physijs.scripts.worker = "" + _this.urlRoot + "/lib/js/physijs_worker.js";
-          Physijs.scripts.ammo = "" + _this.urlRoot + "/lib/js/ammo.js";
-          console.log(Physijs);
-          return require(["" + _this.urlRoot + "/js/three.ext.js"], function() {
-            return require(["" + _this.urlRoot + "/js/physi.ext.js"], function() {
-              return _this.load();
+        return require(["" + _this.urlRoot + "/lib/js/simplex-noise.js"], function() {
+          return require(["" + _this.urlRoot + "/lib/js/physi.js"], function() {
+            Physijs.scripts.worker = "" + _this.urlRoot + "/lib/js/physijs_worker.js";
+            Physijs.scripts.ammo = "" + _this.urlRoot + "/lib/js/ammo.js";
+            console.log(Physijs);
+            return require(["" + _this.urlRoot + "/js/three.ext.js"], function() {
+              return require(["" + _this.urlRoot + "/js/physi.ext.js"], function() {
+                return _this.load();
+              });
             });
           });
         });
@@ -45,25 +47,32 @@
     ThreeApp.prototype.load = function() {
       var _this = this;
       return require(["" + this.urlRoot + "/js/ColladaObject.js"], function() {
-        _this.dae = new ColladaObject(_this, "" + _this.urlRoot + "/models/zombie01/zombie.dae", 0.05, true, {
-          walk: {
-            start: 0,
-            end: 27,
-            looping: true
-          },
-          idle: {
-            start: 28,
-            end: 84,
-            looping: true
-          },
-          attack: {
-            start: 85,
-            end: 106,
-            looping: false
-          }
-        });
-        return _this.dae.load(function() {
-          return _this.init();
+        return require(["" + _this.urlRoot + "/js/TerrainColladaObject.js"], function() {
+          return require(["" + _this.urlRoot + "/js/SkinnedColladaObject.js"], function() {
+            _this.dae = new SkinnedColladaObject(_this, "" + _this.urlRoot + "/models/zombie01/zombie.dae", 0.05, true, {
+              walk: {
+                start: 0,
+                end: 27,
+                looping: true
+              },
+              idle: {
+                start: 28,
+                end: 84,
+                looping: true
+              },
+              attack: {
+                start: 85,
+                end: 106,
+                looping: false
+              }
+            });
+            return _this.dae.load(function() {
+              _this.daeMountain = new TerrainColladaObject(_this, "" + _this.urlRoot + "/models/mountain01/mountain.dae", 0.01, true, null);
+              return _this.daeMountain.load(function() {
+                return _this.init();
+              });
+            });
+          });
         });
       });
     };
@@ -80,9 +89,25 @@
       });
       ground_material = Physijs.createMaterial(new THREE.MeshLambertMaterial({
         map: THREE.ImageUtils.loadTexture("" + this.urlRoot + "/images/rocks.jpg")
-      }), .4, .4);
+      }), .2, .7);
       ground_material.map.wrapS = ground_material.map.wrapT = THREE.RepeatWrapping;
-      ground_material.map.repeat.set(5, 5);
+      ground_material.map.repeat.set(2.5, 2.5);
+      /*
+      NoiseGen = new SimplexNoise;
+      ground_geometry = new THREE.PlaneGeometry( 75, 75, 50, 50 );
+      for i in [0..ground_geometry.vertices.length-1]
+        do (i) ->
+          vertex = ground_geometry.vertices[i];
+          vertex.z = NoiseGen.noise( vertex.x / 10, vertex.y / 10 ) * 0.3
+      ground_geometry.computeFaceNormals()
+      ground_geometry.computeVertexNormals()
+      # If your plane is not square as far as face count then the HeightfieldMesh
+      # takes two more arguments at the end: # of x faces and # of y faces that were passed to THREE.PlaneMaterial
+      ground = new Physijs.HeightfieldMesh(ground_geometry, ground_material,0, 50, 50);
+      ground.rotation.x = Math.PI / -2
+      ground.receiveShadow = true
+      */
+
       ground = new Physijs.BoxMesh(new THREE.CubeGeometry(20, 1, 20), ground_material, 0);
       ground.position.y = -2;
       this.scene.add(ground);
